@@ -1,62 +1,40 @@
-var ageCookieName = "age-verification-verified-43212342";
+const overlay = document.getElementById("overlay");
+const popup = document.getElementById("popup");
+const verifyBtn = document.getElementById("verifyBtn");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-function ageSetCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
+const popupContainer = document.getElementById("popup-container");
+popupContainer.style.display = "block";
 
-function ageGetCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function ageVerificationHide() {
-  var ageVerificationModel = document.getElementById('age-verification');
-  ageVerificationModel.style.display = 'none';
-}
-function ageVerificationShow() {
-  var ageVerificationModel = document.getElementById('age-verification');
-  ageVerificationModel.style.display = 'block';
-}
-
-function ageVerificationLoad() {
-    try {
-      var agePass = ageGetCookie(ageCookieName);
-      if (agePass != "") {
-        ageVerificationHide();
-        return;
-      }
-      else {
-        ageVerificationShow();
-      }
-    }
-    catch(err) {
-      ageVerificationShow();
-    }
-}
-
-function ageVerificationConfirm() {
-  ageSetCookie(ageCookieName, "verified", 365);
-  ageVerificationHide();
-}
-
-function ageVerificationFailed() {
-    window.history.back();
-}
-
-/** Run the verification after DOM has been loaded **/
-document.addEventListener("DOMContentLoaded", function(event) {
-  ageVerificationLoad();
+yesBtn.addEventListener("click", function() {
+	overlay.classList.remove("show");
+	alert("Thank You, Enjoy.");
 });
+
+noBtn.addEventListener("click", function() {
+	overlay.classList.remove("show");
+	alert("You must be over 18 years old to enter the site.");
+});
+function getCookie(name) {
+  const value = "; " + document.cookie;
+  const parts = value.split("; " + name + "=");
+  if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
+const hasSeenPopup = getCookie("seen_popup");
+
+if (!hasSeenPopup) {
+  const overlay = document.getElementById("overlay");
+  overlay.classList.add("show");
+
+
+    // Set a cookie to remember that the visitor has seen the popup
+    const date = new Date();
+    date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = "seen_popup=true;" + expires + ";path=/";
+  
+}
+
+
