@@ -1,20 +1,16 @@
-#veri-check-element {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(40, 40, 40, 1.0);
-  -webkit-transition: 500ms;
-  transition: 500ms;
-  z-index: 90000001;
-  
-  display: none;
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 999;
+	display: none;
 }
 
-.veri-check {
-  background-color: #84884d;
-  font-family: "Source Sans Pro", sans-serif;
+#popup {
+	background-color: #84884d;
   color: white;
   font-size: 13pt;
   text-align: center;
@@ -29,51 +25,82 @@
   -moz-box-shadow: 1px 2px 9px 0px rgba(0,0,0,0.3);
   box-shadow: 1px 2px 9px 0px rgba(0,0,0,0.3);
 }
-@media only screen and (min-height: 400px) {
-  .veri-check {
-    top: 40%;
-  }
-}
 
-.veri-check-title, .veri-check-text {
+#popup p {
+	margin-top: 0;
+  color: #fff;
+  font-size: 24pt;
   display: block;
   margin-bottom: 1em;
 }
-.veri-check-title {
-  font-size: 24pt;
-  margin-bottom: 0.5em;
-}
 
-.veri-check-btn {
+#popup button {
+	margin: 10px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #84844d;
+	cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
   -webkit-box-shadow: 1px 2px 9px 0px rgba(0,0,0,0.3);
   -moz-box-shadow: 1px 2px 9px 0px rgba(0,0,0,0.8);
   box-shadow: 1px 2px 9px 0px rgba(0,0,0,0.8);
-}
-
-.veri-check-btn {
   font-family: "Source Sans Pro", sans-serif;
   background-color: white;
   border: none;
-  font-size: 16pt;
-  
-  color: #84884d;
-  
+  font-size: 16pt;  
   display: inline-block;
   width: 150px;
-  padding: 10px;
-  margin: 5px 10px;
 }
 
-.veri-check-ftr {
-  font-family: "Source Sans Pro", sans-serif;
-  color: #000;
-  display: block;
-  font-size: 12px;
-  text-decoration: normal;
-  text-align: right;
-  margin-top: 20px;
-  margin-bottom: -15px;
+#verifyBtn {
+	margin-top: 20px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #cc3535;
+	color: #fff;
+	cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
 }
-.veri-check-ftr a {
-  color: #990000;
+
+#verifyBtn:hover,
+#popup button:hover {
+	background-color: #67553e;
+  color: #fff;
+}
+
+#overlay.show {
+	display: block;
+}
+
+#popup-container {
+  display: none;
+}
+
+@media only scress and (max-width:600px){
+  #popup-container {
+    width: 90%;
+    height: 80%;
+  }
+  #popup h2 {
+	margin-top: 0;
+  color: #fff;
+  font-size: 16px;
+  }
+  #verifyBtn {
+	margin-top: 20px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #cc3535;
+	color: #fff;
+	cursor: pointer;
+  font-size: 10px;
+  font-weight: 400;
+}
+  
 }
